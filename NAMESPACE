@@ -1,0 +1,2 @@
+import(Matrix, klaR)
+export(lmm,lmm.jack,lmm.simudata,lmm.simu,lmm.simu.jack,lmm.perm,lmm.check)

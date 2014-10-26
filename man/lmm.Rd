@@ -1,0 +1,77 @@
+\name{lmm}
+\alias{lmm}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+An R function for linear mixed model analysis.
+}
+\description{
+An R function for linear mixed model analysis with REML and/or MINQUE approaches
+}
+\usage{
+lmm(formula,data = list(), method = NULL, ALPHA = NULL)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{formula}{
+A linear mixed model formula.
+}
+ \item{data}{
+  Data frame. It can be default.
+}
+  \item{method}{
+The default linear mixed model approach is MINQUE. Users can choose both or one of two linear mixed model approaches, REML and MINQUE.
+}
+  \item{ALPHA}{
+A preset nominal probability level.
+}
+}
+\details{
+No data frame is needed when more than one response variables are analyzed
+}
+\value{
+Return list of simulated results for variance components
+%%  ~Describe the value returned
+%%  If it is a LIST, use
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
+%% ...
+}
+\references{
+Miller, R. G. 1974. The jackknife - a review. Biometrika, 61:1- 15.
+
+Rao, C.R. 1971. Estimation of variance and covariance components-MINQUE theory. J Multiva Ana 1:19
+
+Rao, C. R. and Kleffe, J. 1980. Estimation of variance components. In Handbook of Statistics. Vol. l: 1-40. Krishnaiah, P. R. ed. New York. North-Holland.
+
+Searle, S. R., Casella, G. and McCulloch, C. E. 1992. Variance Components. John Wiley & Sons, Inc. New York.
+
+Wu J (2012) GenMod: An R package for various agricultural data analyses.  ASA, CSSA, and SSSA 2012 International Annual Meetings, Cincinnati, OH, p 127
+
+Wu J., Bondalapati K., Glover K., Berzonsky W., Jenkins J.N., McCarty J.C. 2013. Genetic analysis without replications: model evaluation and application in spring wheat. Euphytica. 190:447-458 
+
+Zhu J. 1989. Estimation of Genetic Variance Components in the General Mixed Model. Ph.D. Dissertation, NC State University, Raleigh, U.S.A
+
+}
+\author{
+Jixiang Wu <qgtools@gmail.com>
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+
+\examples{
+  library(minque)
+  data(ncii)
+  res=lmm(Yld~1|Female*Male+Rep,data=ncii,method=c("reml","minque"))
+  res[[1]]$Var
+  res[[1]]$FixedEffect
+  res[[1]]$RandomEffect
+  #End
+
+}
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
+\keyword{ MINQUE }
+\keyword{ linear mixed model}
+\keyword{ variance components }
+\keyword{ REML }
